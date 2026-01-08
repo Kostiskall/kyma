@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu - Kyma Beach Bar</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: "Trebuchet MS", Verdana, Tahoma, sans-serif;
+    position: relative;
+}
+
+/* Overlay for blur effect only on the background */
+body::before {
+    content: "";
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(245, 241, 234, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 0;
+}
+
+/* Container for the menu content */
+.menu-container {
+    max-width: 600px;
+    width: 90%;
+    background-color: rgba(255, 250, 240, 0.95);
+    margin: 40px 0;
+    padding: 30px 40px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logo */
+header img {
+    max-width: 180px;
+    height: auto;
+    margin-bottom: 10px; 
+    z-index: 2;
+}
+
+/* MENU Title */
+.menu-title {
+    font-family: Georgia, "Trebuchet MS", Verdana, Tahoma, sans-serif; 
+    font-size: 2em;
+    color: #6b4a31;
+    margin-bottom: 15px; 
+    letter-spacing: 2px;
+}
+
+/* Section titles */
+.section {
+    width: 100%;
+    margin-bottom: 30px;
+}
+.section h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #d6b58c;
+    padding-bottom: 5px;
+    color: #6b4a31;
+}
+
+/* Each menu item */
+.item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e3d8c0;
+    font-size: 1.1em;
+    color: #5a3e2b;
+}
+.item:last-child {
+    border-bottom: none;
+}
+.price {
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    font-size: 0.85em;
+    color: #6b4a31;
+    text-align: center;
+    border-top: 1px solid #d6b58c;
+    padding-top: 15px;
+    width: 100%;
+}
+
+/* Responsive adjustments for small screens */
+@media(max-width:600px) {
+    .item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .price {
+        margin-top: 5px;
+    }
+    .menu-container {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="menu-container">
+    <header>
+        <img src="logo.jpg" alt="Kyma Beach Bar Logo">
+    </header>
+
+    <div class="menu-title">MENU</div>
+
+    <!-- Coffee & Juices -->
+    <div class="section">
+        <h2>Καφές & Χυμοί</h2>
+        <div class="item"><span>Εσπρέσο</span><span class="price">2,40€</span></div>
+        <div class="item"><span>Διπλός Εσπρέσο</span><span class="price">3,50€</span></div>
+        <div class="item"><span>Καπουτσίνο</span><span class="price">3,50€</span></div>
+        <div class="item"><span>Λάτε</span><span class="price">3,60€</span></div>
+        <div class="item"><span>Cold Brew</span><span class="price">3,80€</span></div>
+        <div class="item"><span>Φρέσκος Χυμός Πορτοκάλι</span><span class="price">3,60€</span></div>
+    </div>
+
+    <!-- Tea -->
+    <div class="section">
+        <h2>Τσάι</h2>
+        <div class="item"><span>Peace Love & Happiness</span><span class="price">4,00€</span></div>
+        <div class="item"><span>Third Chakra</span><span class="price">4,00€</span></div>
+        <div class="item"><span>Matcha Τσάι</span><span class="price">4,00€</span></div>
+        <div class="item"><span>Πράσινο Τσάι</span><span class="price">4,00€</span></div>
+    </div>
+
+    <!-- Pastries -->
+    <div class="section">
+        <h2>Αρτοσκευάσματα</h2>
+        <div class="item"><span>Κουλούρι Θεσσαλονίκης</span><span class="price">1,10€</span></div>
+        <div class="item"><span>Coffee Bun</span><span class="price">3,00€</span></div>
+        <div class="item"><span>Twist 4 Τυριά</span><span class="price">3,90€</span></div>
+        <div class="item"><span>Danish Μήλο</span><span class="price">3,90€</span></div>
+    </div>
+
+    <!-- Pancakes & French Toast -->
+    <div class="section">
+        <h2>Pancakes & French Toast</h2>
+        <div class="item"><span>Κλασικά Pancakes</span><span class="price">5,90€</span></div>
+        <div class="item"><span>Pancakes με Blueberries</span><span class="price">7,30€</span></div>
+        <div class="item"><span>French Toast</span><span class="price">9,60€</span></div>
+    </div>
+
+    <!-- Salads -->
+    <div class="section">
+        <h2>Σαλάτες</h2>
+        <div class="item"><span>Garden Salad</span><span class="price">10,80€</span></div>
+        <div class="item"><span>Αβοκάντο Σαλάτα</span><span class="price">8,20€</span></div>
+    </div>
+
+    <!-- Sweets -->
+    <div class="section">
+        <h2>Γλυκά</h2>
+        <div class="item"><span>Σοκολατόπιτα</span><span class="price">6,00€</span></div>
+        <div class="item"><span>Tiramisu</span><span class="price">5,50€</span></div>
+        <div class="item"><span>Καρότο Κέικ</span><span class="price">4,00€</span></div>
+    </div>
+
+    <!-- Ice Creams -->
+    <div class="section">
+        <h2>Παγωτά</h2>
+        <div class="item"><span>Salted Caramel</span><span class="price">4,60€</span></div>
+        <div class="item"><span>Φράουλα</span><span class="price">4,60€</span></div>
+        <div class="item"><span>Sorbet Mango (VEGAN)</span><span class="price">4,60€</span></div>
+    </div>
+
+    <!-- Drinks & Cocktails -->
+    <div class="section">
+        <h2>Αναψυκτικά & Κοκτέιλ</h2>
+        <div class="item"><span>Green Cola 250ml</span><span class="price">3,00€</span></div>
+        <div class="item"><span>Λεμονάδα 250ml</span><span class="price">3,00€</span></div>
+        <div class="item"><span>Mojito</span><span class="price">8,00€</span></div>
+        <div class="item"><span>Negroni</span><span class="price">10,00€</span></div>
+    </div>
+
+    <footer>
+        All rights reserved | Powered by Kalligiannakis Kostis
+    </footer>
+</div>
+
+</body>
+</html>
