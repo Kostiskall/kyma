@@ -17,7 +17,6 @@ body {
     position: relative;
 }
 
-/* Background blur overlay */
 body::before {
     content: "";
     position: fixed;
@@ -27,7 +26,6 @@ body::before {
     z-index: 0;
 }
 
-/* Menu container */
 .menu-container {
     max-width: 600px;
     width: 90%;
@@ -41,9 +39,14 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: fadeUp 0.9s ease;
 }
 
-/* Language switch button */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .lang-switch {
     position: absolute;
     top: 15px;
@@ -53,18 +56,32 @@ body::before {
     border-radius: 20px;
     padding: 6px 14px;
     cursor: pointer;
-    font-size: 0.95em;
-    color: #5a3e2b;
+    font-size: 0.9em;
     font-weight: 600;
+    color: #5a3e2b;
+    transition: all 0.25s ease;
 }
 
-/* Logo */
+.lang-switch:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.lang-switch.animate {
+    animation: pulse 0.4s ease;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
 header img {
     max-width: 180px;
     margin-bottom: 5px;
 }
 
-/* MENU title */
 .menu-title {
     font-family: Georgia, "Trebuchet MS", Verdana, Tahoma, sans-serif;
     font-size: 2em;
@@ -73,7 +90,6 @@ header img {
     letter-spacing: 2px;
 }
 
-/* Sections */
 .section {
     width: 100%;
     margin-bottom: 30px;
@@ -87,7 +103,6 @@ header img {
     color: #6b4a31;
 }
 
-/* Items */
 .item {
     display: flex;
     justify-content: space-between;
@@ -97,15 +112,10 @@ header img {
     color: #5a3e2b;
 }
 
-.item:last-child {
-    border-bottom: none;
-}
+.item:last-child { border-bottom: none; }
 
-.price {
-    font-weight: 600;
-}
+.price { font-weight: 600; }
 
-/* Footer */
 footer {
     margin-top: 30px;
     font-size: 0.85em;
@@ -117,13 +127,8 @@ footer {
 }
 
 @media(max-width:600px) {
-    .item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .price {
-        margin-top: 5px;
-    }
+    .item { flex-direction: column; }
+    .price { margin-top: 5px; }
 }
 </style>
 </head>
@@ -132,7 +137,7 @@ footer {
 
 <div class="menu-container">
 
-<button class="lang-switch" onclick="toggleLang()">🇬🇷 / 🇬🇧</button>
+<button class="lang-switch" onclick="toggleLang(this)">🇬🇷 / 🇬🇧</button>
 
 <header>
     <img src="logo.png" alt="Kyma Beach Bar Logo">
@@ -140,7 +145,6 @@ footer {
 
 <div class="menu-title">MENU</div>
 
-<!-- Coffee & Juices -->
 <div class="section">
 <h2 data-gr="Καφές & Χυμοί" data-en="Coffee & Juices">Καφές & Χυμοί</h2>
 <div class="item"><span data-gr="Εσπρέσο" data-en="Espresso">Εσπρέσο</span><span class="price">2,40€</span></div>
@@ -151,7 +155,6 @@ footer {
 <div class="item"><span data-gr="Φρέσκος Χυμός Πορτοκάλι" data-en="Fresh Orange Juice">Φρέσκος Χυμός Πορτοκάλι</span><span class="price">3,60€</span></div>
 </div>
 
-<!-- Tea -->
 <div class="section">
 <h2 data-gr="Τσάι" data-en="Tea">Τσάι</h2>
 <div class="item"><span>Peace Love & Happiness</span><span class="price">4,00€</span></div>
@@ -160,7 +163,6 @@ footer {
 <div class="item"><span data-gr="Πράσινο Τσάι" data-en="Green Tea">Πράσινο Τσάι</span><span class="price">4,00€</span></div>
 </div>
 
-<!-- Pastries -->
 <div class="section">
 <h2 data-gr="Αρτοσκευάσματα" data-en="Pastries">Αρτοσκευάσματα</h2>
 <div class="item"><span data-gr="Κουλούρι Θεσσαλονίκης" data-en="Thessaloniki Bagel">Κουλούρι Θεσσαλονίκης</span><span class="price">1,10€</span></div>
@@ -169,38 +171,33 @@ footer {
 <div class="item"><span data-gr="Danish Μήλο" data-en="Apple Danish">Danish Μήλο</span><span class="price">3,90€</span></div>
 </div>
 
-<!-- Pancakes -->
 <div class="section">
-<h2 data-gr="Pancakes & French Toast" data-en="Pancakes & French Toast">Pancakes & French Toast</h2>
+<h2>Pancakes & French Toast</h2>
 <div class="item"><span data-gr="Κλασικά Pancakes" data-en="Classic Pancakes">Κλασικά Pancakes</span><span class="price">5,90€</span></div>
 <div class="item"><span data-gr="Pancakes με Blueberries" data-en="Blueberry Pancakes">Pancakes με Blueberries</span><span class="price">7,30€</span></div>
 <div class="item"><span>French Toast</span><span class="price">9,60€</span></div>
 </div>
 
-<!-- Salads -->
 <div class="section">
 <h2 data-gr="Σαλάτες" data-en="Salads">Σαλάτες</h2>
 <div class="item"><span>Garden Salad</span><span class="price">10,80€</span></div>
 <div class="item"><span data-gr="Αβοκάντο Σαλάτα" data-en="Avocado Salad">Αβοκάντο Σαλάτα</span><span class="price">8,20€</span></div>
 </div>
 
-<!-- Sweets -->
 <div class="section">
-<h2 data-gr="Γλυκά" data-en="Sweets">Γλυκά</h2>
+<h2 data-gr="Γλυκά" data-en="Desserts">Γλυκά</h2>
 <div class="item"><span data-gr="Σοκολατόπιτα" data-en="Chocolate Cake">Σοκολατόπιτα</span><span class="price">6,00€</span></div>
 <div class="item"><span>Tiramisu</span><span class="price">5,50€</span></div>
 <div class="item"><span data-gr="Καρότο Κέικ" data-en="Carrot Cake">Καρότο Κέικ</span><span class="price">4,00€</span></div>
 </div>
 
-<!-- Ice Cream -->
 <div class="section">
-<h2 data-gr="Παγωτά" data-en="Ice Cream">Παγωτά</h2>
+<h2 data-gr="Παγωτά" data-en="Ice Creams">Παγωτά</h2>
 <div class="item"><span>Salted Caramel</span><span class="price">4,60€</span></div>
 <div class="item"><span data-gr="Φράουλα" data-en="Strawberry">Φράουλα</span><span class="price">4,60€</span></div>
 <div class="item"><span>Sorbet Mango (VEGAN)</span><span class="price">4,60€</span></div>
 </div>
 
-<!-- Drinks -->
 <div class="section">
 <h2 data-gr="Αναψυκτικά & Κοκτέιλ" data-en="Soft Drinks & Cocktails">Αναψυκτικά & Κοκτέιλ</h2>
 <div class="item"><span>Green Cola 250ml</span><span class="price">3,00€</span></div>
@@ -217,11 +214,13 @@ All rights reserved | Powered by Kalligiannakis Kostis
 
 <script>
 let lang = "gr";
-function toggleLang() {
+function toggleLang(btn) {
     lang = lang === "gr" ? "en" : "gr";
     document.querySelectorAll("[data-gr]").forEach(el => {
         el.textContent = el.dataset[lang];
     });
+    btn.classList.add("animate");
+    setTimeout(() => btn.classList.remove("animate"), 400);
 }
 </script>
 
