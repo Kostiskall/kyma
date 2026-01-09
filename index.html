@@ -39,12 +39,15 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: fadeUp 0.9s ease;
 }
 
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+.menu-animate {
+    animation: fadeUp 0.6s ease;
 }
 
 .lang-switch {
@@ -113,7 +116,6 @@ header img {
 }
 
 .item:last-child { border-bottom: none; }
-
 .price { font-weight: 600; }
 
 footer {
@@ -135,7 +137,7 @@ footer {
 
 <body>
 
-<div class="menu-container">
+<div class="menu-container menu-animate" id="menu">
 
 <button class="lang-switch" onclick="toggleLang(this)">🇬🇷 / 🇬🇧</button>
 
@@ -214,13 +216,21 @@ All rights reserved | Powered by Kalligiannakis Kostis
 
 <script>
 let lang = "gr";
+
 function toggleLang(btn) {
     lang = lang === "gr" ? "en" : "gr";
+
     document.querySelectorAll("[data-gr]").forEach(el => {
         el.textContent = el.dataset[lang];
     });
+
     btn.classList.add("animate");
     setTimeout(() => btn.classList.remove("animate"), 400);
+
+    const menu = document.getElementById("menu");
+    menu.classList.remove("menu-animate");
+    void menu.offsetWidth;
+    menu.classList.add("menu-animate");
 }
 </script>
 
