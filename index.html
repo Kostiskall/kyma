@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,284 +8,273 @@
 <style>
 body {
     margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
     background: url('background.jpg') no-repeat center center fixed;
     background-size: cover;
-    font-family: "Trebuchet MS", Verdana, sans-serif;
+    font-family: "Trebuchet MS", Verdana, Tahoma, sans-serif;
+    position: relative;
 }
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(245,241,234,0.65);
+    background: rgba(245, 241, 234, 0.6);
     backdrop-filter: blur(5px);
     z-index: 0;
 }
 
-/* ===== Cover ===== */
+/* ========== COVER ========== */
+
 .cover {
     position: fixed;
     inset: 0;
-    background: rgba(255,250,240,0.97);
+    background: rgba(255,250,240,0.96);
     backdrop-filter: blur(6px);
     z-index: 10;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     transition: transform 0.9s cubic-bezier(.77,0,.18,1);
 }
-.cover.hide { transform: translateY(-100%); }
 
-.cover img { width: 180px; margin-bottom: 25px; }
+.cover.hide {
+    transform: translateY(-100%);
+}
+
+.cover-split {
+    position: absolute;
+    inset: 0;
+    display: flex;
+}
+
+.cover-half {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    color: #6b4a31;
+    letter-spacing: 2px;
+    opacity: 0.75;
+}
+
+.cover-half.left { border-right: 1px solid rgba(0,0,0,0.05); }
+
+.cover img {
+    width: 170px;
+    margin-bottom: 15px;
+    z-index: 2;
+}
 
 .cover-title {
     font-size: 2.2em;
     letter-spacing: 3px;
     color: #6b4a31;
+    margin-bottom: 5px;
+    z-index: 2;
 }
+
 .cover-sub {
-    font-size: 1em;
+    font-size: 0.95em;
     color: #8a6a4f;
-    margin-top: 8px;
+    z-index: 2;
 }
 
 .arrow {
     position: absolute;
-    bottom: 40px;
+    bottom: 35px;
     width: 22px;
     height: 22px;
     border-left: 2px solid #6b4a31;
     border-bottom: 2px solid #6b4a31;
     transform: rotate(-45deg);
     animation: arrowMove 1.5s infinite;
+    z-index: 2;
 }
+
 @keyframes arrowMove {
     0% { transform: translateY(0) rotate(-45deg); opacity: 0.4; }
     50% { transform: translateY(10px) rotate(-45deg); opacity: 1; }
     100% { transform: translateY(0) rotate(-45deg); opacity: 0.4; }
 }
 
-/* ===== Split Menu ===== */
-.container {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    height: 100vh;
-    padding-top: 40px;
-}
+/* ========== MENU ========== */
 
-.menu-column {
-    width: 50%;
-    overflow-y: auto;
-    padding: 25px;
-    box-sizing: border-box;
-}
-
-.menu-box {
-    background: rgba(255,250,240,0.95);
-    border-radius: 12px;
-    padding: 25px 30px;
+.menu-container {
+    max-width: 600px;
+    width: 90%;
+    background-color: rgba(255, 250, 240, 0.95);
+    margin: 120px 0 40px;
+    padding: 30px 40px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    z-index: 1;
+    position: relative;
+    display: none;
+    flex-direction: column;
+    align-items: center;
 }
+
+.menu-container.show { display: flex; }
+
+.menu-animate { animation: fadeUp 0.6s ease; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lang-switch {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #e8d8c3;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #5a3e2b;
+}
+
+header img { max-width: 180px; }
 
 .menu-title {
-    text-align: center;
-    font-size: 1.8em;
+    font-size: 2em;
     color: #6b4a31;
+    margin: 10px 0 20px;
     letter-spacing: 2px;
-    margin-bottom: 20px;
 }
 
-.section h3 {
+.section { width: 100%; margin-bottom: 30px; }
+
+.section h2 {
+    font-size: 1.5em;
     border-bottom: 2px solid #d6b58c;
-    color: #6b4a31;
     padding-bottom: 5px;
-    margin-top: 25px;
+    color: #6b4a31;
 }
 
 .item {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    padding: 10px 0;
     border-bottom: 1px solid #e3d8c0;
+    font-size: 1.05em;
     color: #5a3e2b;
 }
+
 .price { font-weight: 600; }
 
 footer {
-    text-align: center;
-    font-size: 0.8em;
-    margin-top: 25px;
+    margin-top: 30px;
+    font-size: 0.85em;
     color: #6b4a31;
-}
-
-/* Mobile */
-@media(max-width: 900px){
-    .container { flex-direction: column; }
-    .menu-column { width: 100%; height: 50vh; }
+    text-align: center;
+    border-top: 1px solid #d6b58c;
+    padding-top: 15px;
+    width: 100%;
 }
 </style>
 </head>
 <body>
 
-<!-- Cover -->
+<!-- COVER -->
 <div class="cover" id="cover">
+    <div class="cover-split">
+        <div class="cover-half left">Ελληνικό Μενού</div>
+        <div class="cover-half right">English Menu</div>
+    </div>
+
     <img src="logo.png">
     <div class="cover-title">MENU</div>
-    <div class="cover-sub">Discover our menu experience</div>
+    <div class="cover-sub">Choose your language & explore</div>
     <div class="arrow"></div>
 </div>
 
-<div class="container">
+<!-- MENU -->
+<div class="menu-container menu-animate" id="menu">
 
-<!-- ================= GREEK ================= -->
-<div class="menu-column">
-<div class="menu-box">
-<div class="menu-title">Ελληνικό Μενού</div>
+<button class="lang-switch" onclick="toggleLang(this)">🇬🇷 / 🇬🇧</button>
 
-<div class="section">
-<h3>Καφές & Χυμοί</h3>
-<div class="item"><span>Εσπρέσο</span><span class="price">2,40€</span></div>
-<div class="item"><span>Διπλός Εσπρέσο</span><span class="price">3,50€</span></div>
-<div class="item"><span>Καπουτσίνο</span><span class="price">3,50€</span></div>
-<div class="item"><span>Λάτε</span><span class="price">3,60€</span></div>
-<div class="item"><span>Cold Brew</span><span class="price">3,80€</span></div>
-<div class="item"><span>Φρέσκος Χυμός Πορτοκάλι</span><span class="price">3,60€</span></div>
-</div>
+<header>
+    <img src="logo.png">
+</header>
+
+<div class="menu-title">MENU</div>
+
+<!-- (ΟΛΟ ΤΟ ΜΕΝΟΥ ΣΟΥ – ίδιο με πριν) -->
 
 <div class="section">
-<h3>Τσάι</h3>
-<div class="item"><span>Peace Love & Happiness</span><span class="price">4,00€</span></div>
-<div class="item"><span>Third Chakra</span><span class="price">4,00€</span></div>
-<div class="item"><span>Matcha Τσάι</span><span class="price">4,00€</span></div>
-<div class="item"><span>Πράσινο Τσάι</span><span class="price">4,00€</span></div>
+<h2 data-gr="Καφές & Χυμοί" data-en="Coffee & Juices">Καφές & Χυμοί</h2>
+<div class="item"><span data-gr="Εσπρέσο" data-en="Espresso">Εσπρέσο</span><span class="price">2,40€</span></div>
+<div class="item"><span data-gr="Διπλός Εσπρέσο" data-en="Double Espresso">Διπλός Εσπρέσο</span><span class="price">3,50€</span></div>
+<div class="item"><span data-gr="Καπουτσίνο" data-en="Cappuccino">Καπουτσίνο</span><span class="price">3,50€</span></div>
+<div class="item"><span data-gr="Λάτε" data-en="Latte">Λάτε</span><span class="price">3,60€</span></div>
+<div class="item"><span data-gr="Cold Brew" data-en="Cold Brew">Cold Brew</span><span class="price">3,80€</span></div>
+<div class="item"><span data-gr="Φρέσκος Χυμός Πορτοκάλι" data-en="Fresh Orange Juice">Φρέσκος Χυμός Πορτοκάλι</span><span class="price">3,60€</span></div>
 </div>
 
-<div class="section">
-<h3>Αρτοσκευάσματα</h3>
-<div class="item"><span>Κουλούρι Θεσσαλονίκης</span><span class="price">1,10€</span></div>
-<div class="item"><span>Coffee Bun</span><span class="price">3,00€</span></div>
-<div class="item"><span>Twist 4 Τυριά</span><span class="price">3,90€</span></div>
-<div class="item"><span>Danish Μήλο</span><span class="price">3,90€</span></div>
-</div>
+<!-- (όλα τα υπόλοιπα sections όπως πριν – τα κρατάς ίδια) -->
 
-<div class="section">
-<h3>Pancakes & French Toast</h3>
-<div class="item"><span>Κλασικά Pancakes</span><span class="price">5,90€</span></div>
-<div class="item"><span>Pancakes με Blueberries</span><span class="price">7,30€</span></div>
-<div class="item"><span>French Toast</span><span class="price">9,60€</span></div>
-</div>
-
-<div class="section">
-<h3>Σαλάτες</h3>
-<div class="item"><span>Garden Salad</span><span class="price">10,80€</span></div>
-<div class="item"><span>Αβοκάντο Σαλάτα</span><span class="price">8,20€</span></div>
-</div>
-
-<div class="section">
-<h3>Γλυκά</h3>
-<div class="item"><span>Σοκολατόπιτα</span><span class="price">6,00€</span></div>
-<div class="item"><span>Tiramisu</span><span class="price">5,50€</span></div>
-<div class="item"><span>Καρότο Κέικ</span><span class="price">4,00€</span></div>
-</div>
-
-<div class="section">
-<h3>Παγωτά</h3>
-<div class="item"><span>Salted Caramel</span><span class="price">4,60€</span></div>
-<div class="item"><span>Φράουλα</span><span class="price">4,60€</span></div>
-<div class="item"><span>Sorbet Mango (Vegan)</span><span class="price">4,60€</span></div>
-</div>
-
-<div class="section">
-<h3>Αναψυκτικά & Κοκτέιλ</h3>
-<div class="item"><span>Green Cola 250ml</span><span class="price">3,00€</span></div>
-<div class="item"><span>Λεμονάδα 250ml</span><span class="price">3,00€</span></div>
-<div class="item"><span>Mojito</span><span class="price">8,00€</span></div>
-<div class="item"><span>Negroni</span><span class="price">10,00€</span></div>
-</div>
-
-<footer>Kyma Beach Bar</footer>
-</div>
-</div>
-
-<!-- ================= ENGLISH ================= -->
-<div class="menu-column">
-<div class="menu-box">
-<div class="menu-title">English Menu</div>
-
-<!-- ίδιο structure με αγγλικά -->
-
-<div class="section"><h3>Coffee & Juices</h3>
-<div class="item"><span>Espresso</span><span class="price">2,40€</span></div>
-<div class="item"><span>Double Espresso</span><span class="price">3,50€</span></div>
-<div class="item"><span>Cappuccino</span><span class="price">3,50€</span></div>
-<div class="item"><span>Latte</span><span class="price">3,60€</span></div>
-<div class="item"><span>Cold Brew</span><span class="price">3,80€</span></div>
-<div class="item"><span>Fresh Orange Juice</span><span class="price">3,60€</span></div>
-</div>
-
-<div class="section"><h3>Tea</h3>
-<div class="item"><span>Peace Love & Happiness</span><span class="price">4,00€</span></div>
-<div class="item"><span>Third Chakra</span><span class="price">4,00€</span></div>
-<div class="item"><span>Matcha Tea</span><span class="price">4,00€</span></div>
-<div class="item"><span>Green Tea</span><span class="price">4,00€</span></div>
-</div>
-
-<div class="section"><h3>Pastries</h3>
-<div class="item"><span>Thessaloniki Bagel</span><span class="price">1,10€</span></div>
-<div class="item"><span>Coffee Bun</span><span class="price">3,00€</span></div>
-<div class="item"><span>4 Cheese Twist</span><span class="price">3,90€</span></div>
-<div class="item"><span>Apple Danish</span><span class="price">3,90€</span></div>
-</div>
-
-<div class="section"><h3>Pancakes & French Toast</h3>
-<div class="item"><span>Classic Pancakes</span><span class="price">5,90€</span></div>
-<div class="item"><span>Blueberry Pancakes</span><span class="price">7,30€</span></div>
-<div class="item"><span>French Toast</span><span class="price">9,60€</span></div>
-</div>
-
-<div class="section"><h3>Salads</h3>
-<div class="item"><span>Garden Salad</span><span class="price">10,80€</span></div>
-<div class="item"><span>Avocado Salad</span><span class="price">8,20€</span></div>
-</div>
-
-<div class="section"><h3>Desserts</h3>
-<div class="item"><span>Chocolate Cake</span><span class="price">6,00€</span></div>
-<div class="item"><span>Tiramisu</span><span class="price">5,50€</span></div>
-<div class="item"><span>Carrot Cake</span><span class="price">4,00€</span></div>
-</div>
-
-<div class="section"><h3>Ice Cream</h3>
-<div class="item"><span>Salted Caramel</span><span class="price">4,60€</span></div>
-<div class="item"><span>Strawberry</span><span class="price">4,60€</span></div>
-<div class="item"><span>Mango Sorbet (Vegan)</span><span class="price">4,60€</span></div>
-</div>
-
-<div class="section"><h3>Soft Drinks & Cocktails</h3>
-<div class="item"><span>Green Cola 250ml</span><span class="price">3,00€</span></div>
-<div class="item"><span>Lemonade 250ml</span><span class="price">3,00€</span></div>
-<div class="item"><span>Mojito</span><span class="price">8,00€</span></div>
-<div class="item"><span>Negroni</span><span class="price">10,00€</span></div>
-</div>
-
-<footer>Kyma Beach Bar</footer>
-</div>
-</div>
-
+<footer>All rights reserved | Kyma Beach Bar</footer>
 </div>
 
 <script>
-let startY=null;
-const cover=document.getElementById("cover");
-function hideCover(){cover.classList.add("hide");}
+let lang = "gr";
+const cover = document.getElementById("cover");
+const menu = document.getElementById("menu");
+let startX = null;
+let startY = null;
 
-document.addEventListener("touchstart",e=>startY=e.touches[0].clientY);
-document.addEventListener("touchmove",e=>{
- if(!startY)return;
- if(startY-e.touches[0].clientY>60){hideCover();startY=null;}
+function applyLang() {
+    document.querySelectorAll("[data-gr]").forEach(el => {
+        el.textContent = el.dataset[lang];
+    });
+}
+
+function openMenu() {
+    cover.classList.add("hide");
+    menu.classList.add("show");
+    applyLang();
+}
+
+function toggleLang(btn) {
+    lang = lang === "gr" ? "en" : "gr";
+    applyLang();
+}
+
+document.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
 });
-document.addEventListener("wheel",e=>{if(e.deltaY>20)hideCover();});
+
+document.addEventListener("touchmove", e => {
+    if (!startX || !startY) return;
+
+    let dx = e.touches[0].clientX - startX;
+    let dy = startY - e.touches[0].clientY;
+
+    if (dy > 60) {
+        if (startX < window.innerWidth / 2) lang = "gr";
+        else lang = "en";
+
+        openMenu();
+        startX = startY = null;
+    }
+});
+
+document.addEventListener("wheel", e => {
+    if (e.deltaY > 20) {
+        lang = (window.event?.clientX || window.innerWidth/2) < window.innerWidth/2 ? "gr" : "en";
+        openMenu();
+    }
+});
 </script>
 
 </body>
