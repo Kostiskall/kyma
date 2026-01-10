@@ -6,179 +6,137 @@
 <title>Kyma Beach Bar Menu</title>
 
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    background: url('background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    font-family: "Trebuchet MS", Verdana, Tahoma, sans-serif;
-    position: relative;
+body{
+    margin:0;
+    font-family:"Trebuchet MS",Verdana,sans-serif;
+    background:url('background.jpg') no-repeat center center fixed;
+    background-size:cover;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(245, 241, 234, 0.6);
-    backdrop-filter: blur(5px);
-    z-index: 0;
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(245,241,234,0.6);
+    backdrop-filter:blur(5px);
+    z-index:0;
 }
 
 /* ========== COVER ========== */
 
-.cover {
-    position: fixed;
-    inset: 0;
-    background: rgba(255,250,240,0.96);
-    backdrop-filter: blur(6px);
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.9s cubic-bezier(.77,0,.18,1);
+.cover{
+    position:fixed;
+    inset:0;
+    background:rgba(255,250,240,0.96);
+    z-index:10;
+    display:flex;
+    transition:transform .9s cubic-bezier(.77,0,.18,1);
 }
 
-.cover.hide {
-    transform: translateY(-100%);
+.cover.hide{transform:translateY(-100%);}
+
+.cover-half{
+    width:50%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#6b4a31;
 }
 
-.cover-split {
-    position: absolute;
-    inset: 0;
-    display: flex;
+.cover-half img{width:150px;margin-bottom:15px;}
+
+.cover-title{
+    font-size:2.2em;
+    letter-spacing:3px;
 }
 
-.cover-half {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2em;
-    color: #6b4a31;
-    letter-spacing: 2px;
-    opacity: 0.75;
+.cover-sub{
+    font-size:0.95em;
+    margin-top:6px;
+    color:#8a6a4f;
 }
 
-.cover-half.left { border-right: 1px solid rgba(0,0,0,0.05); }
-
-.cover img {
-    width: 170px;
-    margin-bottom: 15px;
-    z-index: 2;
+.arrow{
+    margin-top:40px;
+    width:22px;
+    height:22px;
+    border-left:2px solid #6b4a31;
+    border-bottom:2px solid #6b4a31;
+    transform:rotate(-45deg);
+    animation:arrowMove 1.5s infinite;
 }
 
-.cover-title {
-    font-size: 2.2em;
-    letter-spacing: 3px;
-    color: #6b4a31;
-    margin-bottom: 5px;
-    z-index: 2;
-}
-
-.cover-sub {
-    font-size: 0.95em;
-    color: #8a6a4f;
-    z-index: 2;
-}
-
-.arrow {
-    position: absolute;
-    bottom: 35px;
-    width: 22px;
-    height: 22px;
-    border-left: 2px solid #6b4a31;
-    border-bottom: 2px solid #6b4a31;
-    transform: rotate(-45deg);
-    animation: arrowMove 1.5s infinite;
-    z-index: 2;
-}
-
-@keyframes arrowMove {
-    0% { transform: translateY(0) rotate(-45deg); opacity: 0.4; }
-    50% { transform: translateY(10px) rotate(-45deg); opacity: 1; }
-    100% { transform: translateY(0) rotate(-45deg); opacity: 0.4; }
+@keyframes arrowMove{
+    0%{transform:translateY(0) rotate(-45deg);opacity:.4;}
+    50%{transform:translateY(10px) rotate(-45deg);opacity:1;}
+    100%{transform:translateY(0) rotate(-45deg);opacity:.4;}
 }
 
 /* ========== MENU ========== */
 
-.menu-container {
-    max-width: 600px;
-    width: 90%;
-    background-color: rgba(255, 250, 240, 0.95);
-    margin: 120px 0 40px;
-    padding: 30px 40px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    border-radius: 12px;
-    z-index: 1;
-    position: relative;
-    display: none;
-    flex-direction: column;
-    align-items: center;
+.menu-container{
+    max-width:700px;
+    width:90%;
+    margin:120px auto 40px;
+    background:rgba(255,250,240,.95);
+    padding:30px 40px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+    display:none;
+    position:relative;
+    z-index:1;
 }
 
-.menu-container.show { display: flex; }
+.menu-container.show{display:block;}
 
-.menu-animate { animation: fadeUp 0.6s ease; }
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+.lang-switch{
+    position:absolute;
+    top:15px;
+    right:15px;
+    background:#e8d8c3;
+    border:none;
+    border-radius:20px;
+    padding:6px 14px;
+    cursor:pointer;
+    font-weight:600;
 }
 
-.lang-switch {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #e8d8c3;
-    border: none;
-    border-radius: 20px;
-    padding: 6px 14px;
-    cursor: pointer;
-    font-size: 0.9em;
-    font-weight: 600;
-    color: #5a3e2b;
+header{text-align:center;}
+header img{width:180px;}
+
+.menu-title{
+    text-align:center;
+    font-size:2em;
+    color:#6b4a31;
+    letter-spacing:2px;
+    margin-bottom:20px;
 }
 
-header img { max-width: 180px; }
+.section{margin-bottom:30px;}
 
-.menu-title {
-    font-size: 2em;
-    color: #6b4a31;
-    margin: 10px 0 20px;
-    letter-spacing: 2px;
+.section h2{
+    border-bottom:2px solid #d6b58c;
+    padding-bottom:5px;
+    color:#6b4a31;
 }
 
-.section { width: 100%; margin-bottom: 30px; }
-
-.section h2 {
-    font-size: 1.5em;
-    border-bottom: 2px solid #d6b58c;
-    padding-bottom: 5px;
-    color: #6b4a31;
+.item{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 0;
+    border-bottom:1px solid #e3d8c0;
+    color:#5a3e2b;
 }
 
-.item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #e3d8c0;
-    font-size: 1.05em;
-    color: #5a3e2b;
-}
+.price{font-weight:600;}
 
-.price { font-weight: 600; }
-
-footer {
-    margin-top: 30px;
-    font-size: 0.85em;
-    color: #6b4a31;
-    text-align: center;
-    border-top: 1px solid #d6b58c;
-    padding-top: 15px;
-    width: 100%;
+footer{
+    text-align:center;
+    margin-top:30px;
+    color:#6b4a31;
+    font-size:.85em;
 }
 </style>
 </head>
@@ -186,92 +144,121 @@ footer {
 
 <!-- COVER -->
 <div class="cover" id="cover">
-    <div class="cover-split">
-        <div class="cover-half left">Ελληνικό Μενού</div>
-        <div class="cover-half right">English Menu</div>
+
+    <div class="cover-half">
+        <img src="logo.png">
+        <div class="cover-title">MENU</div>
+        <div class="cover-sub">Ανακαλύψτε το μενού μας</div>
+        <div class="arrow"></div>
     </div>
 
-    <img src="logo.png">
-    <div class="cover-title">MENU</div>
-    <div class="cover-sub">Choose your language & explore</div>
-    <div class="arrow"></div>
+    <div class="cover-half">
+        <img src="logo.png">
+        <div class="cover-title">MENU</div>
+        <div class="cover-sub">Discover our menu experience</div>
+        <div class="arrow"></div>
+    </div>
+
 </div>
 
 <!-- MENU -->
-<div class="menu-container menu-animate" id="menu">
+<div class="menu-container" id="menu">
 
-<button class="lang-switch" onclick="toggleLang(this)">🇬🇷 / 🇬🇧</button>
+<button class="lang-switch" onclick="toggleLang()">🇬🇷 / 🇬🇧</button>
 
 <header>
-    <img src="logo.png">
+<img src="logo.png">
 </header>
 
 <div class="menu-title">MENU</div>
 
-<!-- (ΟΛΟ ΤΟ ΜΕΝΟΥ ΣΟΥ – ίδιο με πριν) -->
+<!-- FULL MENU -->
 
 <div class="section">
-<h2 data-gr="Καφές & Χυμοί" data-en="Coffee & Juices">Καφές & Χυμοί</h2>
-<div class="item"><span data-gr="Εσπρέσο" data-en="Espresso">Εσπρέσο</span><span class="price">2,40€</span></div>
-<div class="item"><span data-gr="Διπλός Εσπρέσο" data-en="Double Espresso">Διπλός Εσπρέσο</span><span class="price">3,50€</span></div>
-<div class="item"><span data-gr="Καπουτσίνο" data-en="Cappuccino">Καπουτσίνο</span><span class="price">3,50€</span></div>
-<div class="item"><span data-gr="Λάτε" data-en="Latte">Λάτε</span><span class="price">3,60€</span></div>
-<div class="item"><span data-gr="Cold Brew" data-en="Cold Brew">Cold Brew</span><span class="price">3,80€</span></div>
-<div class="item"><span data-gr="Φρέσκος Χυμός Πορτοκάλι" data-en="Fresh Orange Juice">Φρέσκος Χυμός Πορτοκάλι</span><span class="price">3,60€</span></div>
+<h2 data-gr="Καφές & Ροφήματα" data-en="Coffee & Drinks"></h2>
+
+<div class="item"><span data-gr="Εσπρέσο" data-en="Espresso"></span><span class="price">2,40€</span></div>
+<div class="item"><span data-gr="Διπλός Εσπρέσο" data-en="Double Espresso"></span><span class="price">3,50€</span></div>
+<div class="item"><span data-gr="Καπουτσίνο" data-en="Cappuccino"></span><span class="price">3,50€</span></div>
+<div class="item"><span data-gr="Λάτε" data-en="Latte"></span><span class="price">3,60€</span></div>
+<div class="item"><span data-gr="Φραπέ" data-en="Frappe"></span><span class="price">3,00€</span></div>
+<div class="item"><span data-gr="Φρέσκος Χυμός Πορτοκάλι" data-en="Fresh Orange Juice"></span><span class="price">3,60€</span></div>
 </div>
 
-<!-- (όλα τα υπόλοιπα sections όπως πριν – τα κρατάς ίδια) -->
+<div class="section">
+<h2 data-gr="Αναψυκτικά" data-en="Soft Drinks"></h2>
 
-<footer>All rights reserved | Kyma Beach Bar</footer>
+<div class="item"><span data-gr="Coca Cola" data-en="Coca Cola"></span><span class="price">2,80€</span></div>
+<div class="item"><span data-gr="Sprite" data-en="Sprite"></span><span class="price">2,80€</span></div>
+<div class="item"><span data-gr="Νερό" data-en="Water"></span><span class="price">1,50€</span></div>
+</div>
+
+<div class="section">
+<h2 data-gr="Cocktails" data-en="Cocktails"></h2>
+
+<div class="item"><span>Mojito</span><span class="price">8,00€</span></div>
+<div class="item"><span>Caipirinha</span><span class="price">8,00€</span></div>
+<div class="item"><span>Piña Colada</span><span class="price">9,00€</span></div>
+<div class="item"><span>Sex on the Beach</span><span class="price">9,00€</span></div>
+</div>
+
+<div class="section">
+<h2 data-gr="Γλυκά" data-en="Desserts"></h2>
+
+<div class="item"><span data-gr="Σοκολατόπιτα" data-en="Chocolate Cake"></span><span class="price">6,00€</span></div>
+<div class="item"><span data-gr="Tiramisu" data-en="Tiramisu"></span><span class="price">5,50€</span></div>
+<div class="item"><span data-gr="Cheesecake" data-en="Cheesecake"></span><span class="price">5,50€</span></div>
+</div>
+
+<footer>Kyma Beach Bar</footer>
+
 </div>
 
 <script>
-let lang = "gr";
-const cover = document.getElementById("cover");
-const menu = document.getElementById("menu");
-let startX = null;
-let startY = null;
+let lang="gr";
+let startX=null,startY=null;
 
-function applyLang() {
-    document.querySelectorAll("[data-gr]").forEach(el => {
-        el.textContent = el.dataset[lang];
+const cover=document.getElementById("cover");
+const menu=document.getElementById("menu");
+
+function applyLang(){
+    document.querySelectorAll("[data-gr]").forEach(el=>{
+        el.textContent=el.dataset[lang];
     });
 }
 
-function openMenu() {
+function openMenu(){
     cover.classList.add("hide");
     menu.classList.add("show");
     applyLang();
 }
 
-function toggleLang(btn) {
-    lang = lang === "gr" ? "en" : "gr";
+function toggleLang(){
+    lang = lang==="gr" ? "en" : "gr";
     applyLang();
 }
 
-document.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
+document.addEventListener("touchstart",e=>{
+    startX=e.touches[0].clientX;
+    startY=e.touches[0].clientY;
 });
 
-document.addEventListener("touchmove", e => {
-    if (!startX || !startY) return;
+document.addEventListener("touchmove",e=>{
+    if(!startX||!startY) return;
 
-    let dx = e.touches[0].clientX - startX;
-    let dy = startY - e.touches[0].clientY;
+    let dy=startY-e.touches[0].clientY;
 
-    if (dy > 60) {
-        if (startX < window.innerWidth / 2) lang = "gr";
-        else lang = "en";
-
+    if(dy>60){
+        if(startX<window.innerWidth/2) lang="gr";
+        else lang="en";
         openMenu();
-        startX = startY = null;
+        startX=startY=null;
     }
 });
 
-document.addEventListener("wheel", e => {
-    if (e.deltaY > 20) {
-        lang = (window.event?.clientX || window.innerWidth/2) < window.innerWidth/2 ? "gr" : "en";
+document.addEventListener("wheel",e=>{
+    if(e.deltaY>20){
+        lang = (window.innerWidth/2) > window.event.clientX ? "gr":"en";
         openMenu();
     }
 });
