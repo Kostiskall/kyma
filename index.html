@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Menu - Kyma Beach Bar</title>
-
 <style>
+/* ===== BODY & BACKGROUND ===== */
 body {
     margin: 0;
     padding: 0;
@@ -16,7 +16,6 @@ body {
     font-family: "Trebuchet MS", Verdana, Tahoma, sans-serif;
     position: relative;
 }
-
 body::before {
     content: "";
     position: fixed;
@@ -26,72 +25,7 @@ body::before {
     z-index: 0;
 }
 
-/* ================= COVER ================= */
-
-.cover {
-    position: fixed;
-    inset: 0;
-    background: rgba(255, 250, 240, 0.97);
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.9s cubic-bezier(.77,0,.18,1);
-}
-
-.cover.hide {
-    transform: translateY(-100%);
-}
-
-.cover-logo {
-    margin-top: 60px;
-}
-
-.cover-logo img {
-    width: 180px;
-}
-
-.cover-content {
-    margin-top: 60px;
-    width: 100%;
-    display: flex;
-}
-
-.cover-half {
-    width: 50%;
-    text-align: center;
-    color: #6b4a31;
-}
-
-.cover-title {
-    font-size: 1.6em;
-    letter-spacing: 2px;
-}
-
-.cover-sub {
-    margin-top: 8px;
-    font-size: 0.95em;
-    color: #8a6a4f;
-}
-
-.arrow {
-    margin: 40px auto 0;
-    width: 22px;
-    height: 22px;
-    border-left: 2px solid #6b4a31;
-    border-bottom: 2px solid #6b4a31;
-    transform: rotate(-45deg);
-    animation: arrowMove 1.5s infinite;
-}
-
-@keyframes arrowMove {
-    0% { transform: translateY(0) rotate(-45deg); opacity: 0.4; }
-    50% { transform: translateY(10px) rotate(-45deg); opacity: 1; }
-    100% { transform: translateY(0) rotate(-45deg); opacity: 0.4; }
-}
-
-/* ================= MENU ================= */
-
+/* ===== MENU CONTAINER ===== */
 .menu-container {
     max-width: 600px;
     width: 90%;
@@ -102,54 +36,57 @@ body::before {
     border-radius: 12px;
     z-index: 1;
     position: relative;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
+.menu-container.show { display: flex; }
 
-.menu-container.show {
-    display: flex;
-}
+@keyframes fadeUp { from { opacity:0; transform: translateY(20px);} to { opacity:1; transform: translateY(0);} }
+.menu-animate { animation: fadeUp 0.6s ease; }
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.menu-animate {
-    animation: fadeUp 0.6s ease;
-}
-
+/* ===== LANGUAGE TOGGLE PILL ===== */
 .lang-switch {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: #e8d8c3;
-    border: none;
-    border-radius: 20px;
-    padding: 6px 14px;
+    width: 80px;
+    height: 36px;
+    border-radius: 50px;
+    border: 2px solid #5a3e2b;
+    background: #f3e8d8;
     cursor: pointer;
-    font-size: 0.9em;
-    font-weight: 600;
-    color: #5a3e2b;
-    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+.lang-switch span {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+.lang-switch .toggle {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #5a3e2b;
+    transition: all 0.3s ease;
+    z-index: 1;
 }
 
-.lang-switch.animate {
-    animation: pulse 0.4s ease;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-header img {
-    max-width: 180px;
-    margin-bottom: 5px;
-}
-
+/* ===== HEADER ===== */
+header img { max-width: 180px; margin-bottom: 5px; }
 .menu-title {
     font-family: Georgia, "Trebuchet MS", Verdana, Tahoma, sans-serif;
     font-size: 2em;
@@ -157,147 +94,117 @@ header img {
     margin-bottom: 15px;
     letter-spacing: 2px;
 }
-
-.section {
-    width: 100%;
-    margin-bottom: 30px;
-}
-
-.section h2 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #d6b58c;
-    padding-bottom: 5px;
-    color: #6b4a31;
-}
-
-.item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #e3d8c0;
-    font-size: 1.1em;
-    color: #5a3e2b;
-}
-
+.section { width: 100%; margin-bottom: 30px; }
+.section h2 { font-size: 1.5em; margin-bottom: 15px; border-bottom: 2px solid #d6b58c; padding-bottom: 5px; color: #6b4a31; }
+.item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e3d8c0; font-size: 1.1em; color: #5a3e2b; }
+.item:last-child { border-bottom: none; }
 .price { font-weight: 600; }
+footer { margin-top: 30px; font-size: 0.85em; color: #6b4a31; text-align: center; border-top: 1px solid #d6b58c; padding-top: 15px; width: 100%; }
 
-footer {
-    margin-top: 30px;
-    font-size: 0.85em;
-    color: #6b4a31;
-    text-align: center;
-    border-top: 1px solid #d6b58c;
-    padding-top: 15px;
-    width: 100%;
+@media(max-width:600px) { .item { flex-direction: column; } .price { margin-top: 5px; } }
+
+/* ===== COVER ===== */
+.cover {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,250,240,0.97);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.9s cubic-bezier(.77,0,.18,1);
 }
-
-/* ================= END ================= */
+.cover.hide { transform: translateY(-100%); }
+.cover-logo { margin-top: 60px; }
+.cover-logo img { width: 180px; }
+.cover-content { margin-top: 60px; width: 100%; display: flex; }
+.cover-half { width: 50%; text-align: center; color: #6b4a31; }
+.cover-title { font-size: 1.6em; letter-spacing: 2px; }
+.cover-sub { margin-top: 8px; font-size: 0.95em; color: #8a6a4f; }
+.arrow { margin: 40px auto 0; width: 22px; height: 22px; border-left: 2px solid #6b4a31; border-bottom: 2px solid #6b4a31; transform: rotate(-45deg); animation: arrowMove 1.5s infinite; }
+@keyframes arrowMove { 0%{transform:translateY(0) rotate(-45deg);opacity:.4;} 50%{transform:translateY(10px) rotate(-45deg);opacity:1;} 100%{transform:translateY(0) rotate(-45deg);opacity:.4;} }
 </style>
 </head>
 <body>
 
 <!-- COVER -->
 <div class="cover" id="cover">
-
-    <div class="cover-logo">
-        <img src="logo.png">
-    </div>
-
+    <div class="cover-logo"><img src="logo.png" alt="Logo"></div>
     <div class="cover-content">
         <div class="cover-half">
             <div class="cover-title">Ελληνικό Μενού</div>
             <div class="cover-sub">Ανακάλυψε το μενού μας</div>
             <div class="arrow"></div>
         </div>
-
         <div class="cover-half">
             <div class="cover-title">English Menu</div>
             <div class="cover-sub">Discover our menu experience</div>
             <div class="arrow"></div>
         </div>
     </div>
-
 </div>
 
 <!-- MENU -->
-<div class="menu-container" id="menu">
+<div class="menu-container menu-animate" id="menu">
+    <!-- PILL LANGUAGE TOGGLE -->
+    <div class="lang-switch" onclick="toggleLang(this)">
+        <span>🇬🇷</span>
+        <span>🇬🇧</span>
+        <div class="toggle"></div>
+    </div>
 
-<button class="lang-switch" onclick="toggleLang(this)">🇬🇷 / 🇬🇧</button>
+    <header><img src="logo.png" alt="Kyma Beach Bar Logo"></header>
+    <div class="menu-title">MENU</div>
 
-<header>
-    <img src="logo.png">
-</header>
-
-<div class="menu-title">MENU</div>
-
-<!-- ΤΟ ΑΥΘΕΝΤΙΚΟ ΣΟΥ ΜΕΝΟΥ -->
-
-<div class="section">
-<h2 data-gr="Καφές & Χυμοί" data-en="Coffee & Juices">Καφές & Χυμοί</h2>
-<div class="item"><span data-gr="Εσπρέσο" data-en="Espresso">Εσπρέσο</span><span class="price">2,40€</span></div>
-<div class="item"><span data-gr="Διπλός Εσπρέσο" data-en="Double Espresso">Διπλός Εσπρέσο</span><span class="price">3,50€</span></div>
-<div class="item"><span data-gr="Καπουτσίνο" data-en="Cappuccino">Καπουτσίνο</span><span class="price">3,50€</span></div>
-<div class="item"><span data-gr="Λάτε" data-en="Latte">Λάτε</span><span class="price">3,60€</span></div>
-<div class="item"><span data-gr="Cold Brew" data-en="Cold Brew">Cold Brew</span><span class="price">3,80€</span></div>
-<div class="item"><span data-gr="Φρέσκος Χυμός Πορτοκάλι" data-en="Fresh Orange Juice">Φρέσκος Χυμός Πορτοκάλι</span><span class="price">3,60€</span></div>
-</div>
-
-<!-- (συνεχίζει όλο το μενού σου ακριβώς όπως πριν) -->
-
-<footer>
-All rights reserved | Powered by Kalligiannakis Kostis
-</footer>
-
+    <!-- ================= FULL MENU ================= -->
+    <div class="section">
+        <h2 data-gr="Καφές & Χυμοί" data-en="Coffee & Juices">Καφές & Χυμοί</h2>
+        <div class="item"><span data-gr="Εσπρέσο" data-en="Espresso">Εσπρέσο</span><span class="price">2,40€</span></div>
+        <div class="item"><span data-gr="Διπλός Εσπρέσο" data-en="Double Espresso">Διπλός Εσπρέσο</span><span class="price">3,50€</span></div>
+        <div class="item"><span data-gr="Καπουτσίνο" data-en="Cappuccino">Καπουτσίνο</span><span class="price">3,50€</span></div>
+        <div class="item"><span data-gr="Λάτε" data-en="Latte">Λάτε</span><span class="price">3,60€</span></div>
+        <div class="item"><span data-gr="Cold Brew" data-en="Cold Brew">Cold Brew</span><span class="price">3,80€</span></div>
+        <div class="item"><span data-gr="Φρέσκος Χυμός Πορτοκάλι" data-en="Fresh Orange Juice">Φρέσκος Χυμός Πορτοκάλι</span><span class="price">3,60€</span></div>
+    </div>
+    <!-- Άλλα sections όπως τα έχεις ήδη -->
+    <footer>All rights reserved | Powered by Kalligiannakis Kostis</footer>
 </div>
 
 <script>
-let lang = "gr";
-let startX = null;
-let startY = null;
+let lang="gr";
+const cover=document.getElementById("cover");
+const menu=document.getElementById("menu");
 
-const cover = document.getElementById("cover");
-const menu = document.getElementById("menu");
+function toggleLang(btn){
+    lang = lang==="gr"?"en":"gr";
+    document.querySelectorAll("[data-gr]").forEach(el=>{el.textContent=el.dataset[lang];});
+    
+    // move pill toggle
+    const toggle = btn.querySelector(".toggle");
+    toggle.style.left = lang==="gr"?"4px":"calc(100% - 32px)";
 
-function applyLang() {
-    document.querySelectorAll("[data-gr]").forEach(el => {
-        el.textContent = el.dataset[lang];
-    });
-}
-
-function openMenu() {
-    cover.classList.add("hide");
-    menu.classList.add("show");
-    menu.classList.add("menu-animate");
-    applyLang();
-}
-
-function toggleLang(btn) {
-    lang = lang === "gr" ? "en" : "gr";
-    applyLang();
-
+    // pulse animation
     btn.classList.add("animate");
-    setTimeout(() => btn.classList.remove("animate"), 400);
+    setTimeout(()=>btn.classList.remove("animate"),400);
 
+    // fade animation on menu
     menu.classList.remove("menu-animate");
     void menu.offsetWidth;
     menu.classList.add("menu-animate");
 }
 
-document.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-});
-
-document.addEventListener("touchmove", e => {
-    if (!startX || !startY) return;
-
-    let dy = startY - e.touches[0].clientY;
-
-    if (dy > 60) {
-        lang = startX < window.innerWidth / 2 ? "gr" : "en";
-        openMenu();
-        startX = startY = null;
+// Swipe up cover to open menu
+let startX=null, startY=null;
+document.addEventListener("touchstart",e=>{ startX=e.touches[0].clientX; startY=e.touches[0].clientY; });
+document.addEventListener("touchmove",e=>{
+    if(!startX||!startY) return;
+    let dy=startY-e.touches[0].clientY;
+    if(dy>60){
+        lang = startX<window.innerWidth/2?"gr":"en";
+        cover.classList.add("hide");
+        menu.classList.add("show");
+        document.querySelectorAll("[data-gr]").forEach(el=>{el.textContent=el.dataset[lang];});
+        startX=startY=null;
     }
 });
 </script>
