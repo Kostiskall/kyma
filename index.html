@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Menu - Kyma Beach Bar</title>
+
 <style>
 body {
     margin: 0;
@@ -15,6 +16,7 @@ body {
     font-family: "Trebuchet MS", Verdana, Tahoma, sans-serif;
     position: relative;
 }
+
 body::before {
     content: "";
     position: fixed;
@@ -23,6 +25,7 @@ body::before {
     backdrop-filter: blur(5px);
     z-index: 0;
 }
+
 .menu-container {
     max-width: 600px;
     width: 90%;
@@ -37,59 +40,51 @@ body::before {
     flex-direction: column;
     align-items: center;
 }
+
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
-.menu-animate { animation: fadeUp 0.6s ease; }
 
-/* ===== LANG TOGGLE PILL ===== */
-.lang-pill {
+.menu-animate {
+    animation: fadeUp 0.6s ease;
+}
+
+.lang-switch {
     position: absolute;
     top: 15px;
     right: 15px;
-    width: 100px;
-    height: 40px;
-    background: #e0e0e0;
-    border-radius: 30px;
+    background: #e8d8c3;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 14px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-    transition: background 0.3s;
-}
-.lang-pill:hover { background: #d0d0d0; }
-
-.lang-ball {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    transition: transform 0.3s;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #5a3e2b;
+    transition: all 0.25s ease;
 }
 
-.lang-flag {
-    width: 22px;
-    height: 14px;
-    object-fit: cover;
+.lang-switch:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-.lang-label {
-    flex: 1;
-    text-align: center;
-    font-size: 0.85em;
-    font-weight: bold;
-    color: #555;
-    pointer-events: none;
+.lang-switch.animate {
+    animation: pulse 0.4s ease;
 }
 
-/* ===== HEADER & MENU ===== */
-header img { max-width: 180px; margin-bottom: 5px; }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+header img {
+    max-width: 180px;
+    margin-bottom: 5px;
+}
+
 .menu-title {
     font-family: Georgia, "Trebuchet MS", Verdana, Tahoma, sans-serif;
     font-size: 2em;
@@ -97,76 +92,147 @@ header img { max-width: 180px; margin-bottom: 5px; }
     margin-bottom: 15px;
     letter-spacing: 2px;
 }
-.section { width: 100%; margin-bottom: 30px; }
-.section h2 { font-size: 1.5em; margin-bottom: 15px; border-bottom: 2px solid #d6b58c; padding-bottom: 5px; color: #6b4a31; }
-.item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e3d8c0; font-size: 1.1em; color: #5a3e2b; }
+
+.section {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #d6b58c;
+    padding-bottom: 5px;
+    color: #6b4a31;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e3d8c0;
+    font-size: 1.1em;
+    color: #5a3e2b;
+}
+
 .item:last-child { border-bottom: none; }
 .price { font-weight: 600; }
-footer { margin-top: 30px; font-size: 0.85em; color: #6b4a31; text-align: center; border-top: 1px solid #d6b58c; padding-top: 15px; width: 100%; }
-@media(max-width:600px) { .item { flex-direction: column; } .price { margin-top: 5px; } }
+
+footer {
+    margin-top: 30px;
+    font-size: 0.85em;
+    color: #6b4a31;
+    text-align: center;
+    border-top: 1px solid #d6b58c;
+    padding-top: 15px;
+    width: 100%;
+}
+
+@media(max-width:600px) {
+    .item { flex-direction: column; }
+    .price { margin-top: 5px; }
+}
 </style>
 </head>
+
 <body>
+
 <div class="menu-container menu-animate" id="menu">
 
-    <!-- PILL TOGGLE -->
-    <div class="lang-pill" id="langPill" onclick="toggleLangPill()">
-        <div class="lang-label">ΕΛ</div>
-        <div class="lang-ball">
-            <img id="flagImg" src="/mnt/data/f7a59546-2bcb-4350-95dd-48415d5c3d4d.png" alt="flag" class="lang-flag">
-        </div>
-        <div class="lang-label">ΑΓ</div>
-    </div>
+<button class="lang-switch" onclick="toggleLang(this)">🇬🇷 / 🇬🇧</button>
 
-    <header>
-        <img src="logo.png" alt="Kyma Beach Bar Logo">
-    </header>
-    <div class="menu-title">MENU</div>
+<header>
+    <img src="logo.png" alt="Kyma Beach Bar Logo">
+</header>
 
-    <!-- FULL MENU -->
-    <div class="section">
-        <h2 data-gr="Καφές & Χυμοί" data-en="Coffee & Juices">Καφές & Χυμοί</h2>
-        <div class="item"><span data-gr="Εσπρέσο" data-en="Espresso">Εσπρέσο</span><span class="price">2,40€</span></div>
-        <div class="item"><span data-gr="Διπλός Εσπρέσο" data-en="Double Espresso">Διπλός Εσπρέσο</span><span class="price">3,50€</span></div>
-        <div class="item"><span data-gr="Καπουτσίνο" data-en="Cappuccino">Καπουτσίνο</span><span class="price">3,50€</span></div>
-        <div class="item"><span data-gr="Λάτε" data-en="Latte">Λάτε</span><span class="price">3,60€</span></div>
-        <div class="item"><span data-gr="Cold Brew" data-en="Cold Brew">Cold Brew</span><span class="price">3,80€</span></div>
-        <div class="item"><span data-gr="Φρέσκος Χυμός Πορτοκάλι" data-en="Fresh Orange Juice">Φρέσκος Χυμός Πορτοκάλι</span><span class="price">3,60€</span></div>
-    </div>
-    <!-- ΟΛΟ ΤΟ ΥΠΟΛΟΙΠΟ ΜΕΝΟΥ ΔΙΑΤΗΡΕΙΤΑΙ ΑΚΡΙΒΩΣ ΟΠΩΣ ΤΟ ΕΙΧΕΣ -->
+<div class="menu-title">MENU</div>
 
-    <footer>All rights reserved | Powered by Kalligiannakis Kostis</footer>
+<div class="section">
+<h2 data-gr="Καφές & Χυμοί" data-en="Coffee & Juices">Καφές & Χυμοί</h2>
+<div class="item"><span data-gr="Εσπρέσο" data-en="Espresso">Εσπρέσο</span><span class="price">2,40€</span></div>
+<div class="item"><span data-gr="Διπλός Εσπρέσο" data-en="Double Espresso">Διπλός Εσπρέσο</span><span class="price">3,50€</span></div>
+<div class="item"><span data-gr="Καπουτσίνο" data-en="Cappuccino">Καπουτσίνο</span><span class="price">3,50€</span></div>
+<div class="item"><span data-gr="Λάτε" data-en="Latte">Λάτε</span><span class="price">3,60€</span></div>
+<div class="item"><span data-gr="Cold Brew" data-en="Cold Brew">Cold Brew</span><span class="price">3,80€</span></div>
+<div class="item"><span data-gr="Φρέσκος Χυμός Πορτοκάλι" data-en="Fresh Orange Juice">Φρέσκος Χυμός Πορτοκάλι</span><span class="price">3,60€</span></div>
+</div>
+
+<div class="section">
+<h2 data-gr="Τσάι" data-en="Tea">Τσάι</h2>
+<div class="item"><span>Peace Love & Happiness</span><span class="price">4,00€</span></div>
+<div class="item"><span>Third Chakra</span><span class="price">4,00€</span></div>
+<div class="item"><span data-gr="Matcha Τσάι" data-en="Matcha Tea">Matcha Τσάι</span><span class="price">4,00€</span></div>
+<div class="item"><span data-gr="Πράσινο Τσάι" data-en="Green Tea">Πράσινο Τσάι</span><span class="price">4,00€</span></div>
+</div>
+
+<div class="section">
+<h2 data-gr="Αρτοσκευάσματα" data-en="Pastries">Αρτοσκευάσματα</h2>
+<div class="item"><span data-gr="Κουλούρι Θεσσαλονίκης" data-en="Thessaloniki Bagel">Κουλούρι Θεσσαλονίκης</span><span class="price">1,10€</span></div>
+<div class="item"><span>Coffee Bun</span><span class="price">3,00€</span></div>
+<div class="item"><span data-gr="Twist 4 Τυριά" data-en="4 Cheese Twist">Twist 4 Τυριά</span><span class="price">3,90€</span></div>
+<div class="item"><span data-gr="Danish Μήλο" data-en="Apple Danish">Danish Μήλο</span><span class="price">3,90€</span></div>
+</div>
+
+<div class="section">
+<h2>Pancakes & French Toast</h2>
+<div class="item"><span data-gr="Κλασικά Pancakes" data-en="Classic Pancakes">Κλασικά Pancakes</span><span class="price">5,90€</span></div>
+<div class="item"><span data-gr="Pancakes με Blueberries" data-en="Blueberry Pancakes">Pancakes με Blueberries</span><span class="price">7,30€</span></div>
+<div class="item"><span>French Toast</span><span class="price">9,60€</span></div>
+</div>
+
+<div class="section">
+<h2 data-gr="Σαλάτες" data-en="Salads">Σαλάτες</h2>
+<div class="item"><span>Garden Salad</span><span class="price">10,80€</span></div>
+<div class="item"><span data-gr="Αβοκάντο Σαλάτα" data-en="Avocado Salad">Αβοκάντο Σαλάτα</span><span class="price">8,20€</span></div>
+</div>
+
+<div class="section">
+<h2 data-gr="Γλυκά" data-en="Desserts">Γλυκά</h2>
+<div class="item"><span data-gr="Σοκολατόπιτα" data-en="Chocolate Cake">Σοκολατόπιτα</span><span class="price">6,00€</span></div>
+<div class="item"><span>Tiramisu</span><span class="price">5,50€</span></div>
+<div class="item"><span data-gr="Καρότο Κέικ" data-en="Carrot Cake">Καρότο Κέικ</span><span class="price">4,00€</span></div>
+</div>
+
+<div class="section">
+<h2 data-gr="Παγωτά" data-en="Ice Creams">Παγωτά</h2>
+<div class="item"><span>Salted Caramel</span><span class="price">4,60€</span></div>
+<div class="item"><span data-gr="Φράουλα" data-en="Strawberry">Φράουλα</span><span class="price">4,60€</span></div>
+<div class="item"><span>Sorbet Mango (VEGAN)</span><span class="price">4,60€</span></div>
+</div>
+
+<div class="section">
+<h2 data-gr="Αναψυκτικά & Κοκτέιλ" data-en="Soft Drinks & Cocktails">Αναψυκτικά & Κοκτέιλ</h2>
+<div class="item"><span>Green Cola 250ml</span><span class="price">3,00€</span></div>
+<div class="item"><span data-gr="Λεμονάδα 250ml" data-en="Lemonade 250ml">Λεμονάδα 250ml</span><span class="price">3,00€</span></div>
+<div class="item"><span>Mojito</span><span class="price">8,00€</span></div>
+<div class="item"><span>Negroni</span><span class="price">10,00€</span></div>
+</div>
+
+<footer>
+All rights reserved | Powered by Kalligiannakis Kostis
+</footer>
+
 </div>
 
 <script>
 let lang = "gr";
-const pill = document.getElementById("langPill");
-const ball = pill.querySelector(".lang-ball");
-const flagImg = document.getElementById("flagImg");
 
-function toggleLangPill() {
+function toggleLang(btn) {
     lang = lang === "gr" ? "en" : "gr";
 
-    // Update all menu texts
     document.querySelectorAll("[data-gr]").forEach(el => {
         el.textContent = el.dataset[lang];
     });
 
-    // Animate the ball
-    if(lang === "gr") {
-        ball.style.transform = "translateX(0px)";
-        flagImg.src = "/mnt/data/f7a59546-2bcb-4350-95dd-48415d5c3d4d.png"; // ελληνική σημαία
-    } else {
-        ball.style.transform = "translateX(55px)";
-        flagImg.src = "/mnt/data/f7a59546-2bcb-4350-95dd-48415d5c3d4d.png"; // αγγλική σημαία
-    }
+    btn.classList.add("animate");
+    setTimeout(() => btn.classList.remove("animate"), 400);
 
-    // menu animation pulse
     const menu = document.getElementById("menu");
     menu.classList.remove("menu-animate");
     void menu.offsetWidth;
     menu.classList.add("menu-animate");
 }
 </script>
+
 </body>
 </html>
