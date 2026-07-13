@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menu - Kyma Beach Bar</title>
+<title>Pizza Night Menu</title>
 
 <style>
 body {
@@ -50,36 +50,6 @@ body::before {
     animation: fadeUp 0.6s ease;
 }
 
-.lang-switch {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #e8d8c3;
-    border: none;
-    border-radius: 20px;
-    padding: 6px 14px;
-    cursor: pointer;
-    font-size: 0.9em;
-    font-weight: 600;
-    color: #5a3e2b;
-    transition: all 0.25s ease;
-}
-
-.lang-switch:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-.lang-switch.animate {
-    animation: pulse 0.4s ease;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
 header img {
     max-width: 180px;
     margin-bottom: 5px;
@@ -104,6 +74,12 @@ header img {
     border-bottom: 2px solid #d6b58c;
     padding-bottom: 5px;
     color: #6b4a31;
+}
+
+.ingredients {
+    font-size: 0.75em;
+    color: #6c5b4c;
+    margin-top: 4px;
 }
 
 .item {
@@ -139,73 +115,60 @@ footer {
 
 <div class="menu-container menu-animate" id="menu">
 
-<button class="lang-switch" onclick="toggleLang(this)">🇬🇷 / 🇬🇧</button>
-
 <header>
-    <img src="logo.png" alt="Kyma Beach Bar Logo">
+    <img src="logo.png" alt="my Logo">
 </header>
 
 <div class="menu-title">MENU</div>
 
 <div class="section">
-<h2 data-gr="Καφές & Χυμοί" data-en="Coffee & Juices">Καφές & Χυμοί</h2>
-<div class="item"><span data-gr="Εσπρέσο" data-en="Espresso">Εσπρέσο</span><span class="price">2,40€</span></div>
-<div class="item"><span data-gr="Διπλός Εσπρέσο" data-en="Double Espresso">Διπλός Εσπρέσο</span><span class="price">3,50€</span></div>
-<div class="item"><span data-gr="Καπουτσίνο" data-en="Cappuccino">Καπουτσίνο</span><span class="price">3,50€</span></div>
-<div class="item"><span data-gr="Λάτε" data-en="Latte">Λάτε</span><span class="price">3,60€</span></div>
-<div class="item"><span data-gr="Cold Brew" data-en="Cold Brew">Cold Brew</span><span class="price">3,80€</span></div>
-<div class="item"><span data-gr="Φρέσκος Χυμός Πορτοκάλι" data-en="Fresh Orange Juice">Φρέσκος Χυμός Πορτοκάλι</span><span class="price">3,60€</span></div>
+<h2>Antipasti</h2>
+
+<div class="item">
+<div class="item-header">
+<span>Focaccia</span>
+
+</div>
+<div class="ingredients">
+Prosciutto • Ρόκα • Πέστο βασιλικού • Μοτσαρέλα
+</div>
+</div>
+
 </div>
 
 <div class="section">
-<h2 data-gr="Τσάι" data-en="Tea">Τσάι</h2>
-<div class="item"><span>Peace Love & Happiness</span><span class="price">4,00€</span></div>
-<div class="item"><span>Third Chakra</span><span class="price">4,00€</span></div>
-<div class="item"><span data-gr="Matcha Τσάι" data-en="Matcha Tea">Matcha Τσάι</span><span class="price">4,00€</span></div>
-<div class="item"><span data-gr="Πράσινο Τσάι" data-en="Green Tea">Πράσινο Τσάι</span><span class="price">4,00€</span></div>
+<h2>Pizza</h2>
+
+<div class="item">
+<div class="item-header">
+<span>Margherita</span>
+
+</div>
+<div class="ingredients">
+Σάλτσα ντομάτας • Μοτσαρέλα • Parmesan • Φρέσκος βασιλικός
+</div>
 </div>
 
-<div class="section">
-<h2 data-gr="Αρτοσκευάσματα" data-en="Pastries">Αρτοσκευάσματα</h2>
-<div class="item"><span data-gr="Κουλούρι Θεσσαλονίκης" data-en="Thessaloniki Bagel">Κουλούρι Θεσσαλονίκης</span><span class="price">1,10€</span></div>
-<div class="item"><span>Coffee Bun</span><span class="price">3,00€</span></div>
-<div class="item"><span data-gr="Twist 4 Τυριά" data-en="4 Cheese Twist">Twist 4 Τυριά</span><span class="price">3,90€</span></div>
-<div class="item"><span data-gr="Danish Μήλο" data-en="Apple Danish">Danish Μήλο</span><span class="price">3,90€</span></div>
+<div class="item">
+<div class="item-header">
+<span>Pepperoni</span>
+
+</div>
+<div class="ingredients">
+Σάλτσα ντομάτας • Μοτσαρέλα • Parmesan • Pepperoni
+</div>
 </div>
 
-<div class="section">
-<h2>Pancakes & French Toast</h2>
-<div class="item"><span data-gr="Κλασικά Pancakes" data-en="Classic Pancakes">Κλασικά Pancakes</span><span class="price">5,90€</span></div>
-<div class="item"><span data-gr="Pancakes με Blueberries" data-en="Blueberry Pancakes">Pancakes με Blueberries</span><span class="price">7,30€</span></div>
-<div class="item"><span>French Toast</span><span class="price">9,60€</span></div>
+<div class="item">
+<div class="item-header">
+<span>Pizza Special</span>
+
+</div>
+<div class="ingredients">
+Σάλτσα ντομάτας • Μοτσαρέλα • Μπέικον • Μανιτάρια
+</div>
 </div>
 
-<div class="section">
-<h2 data-gr="Σαλάτες" data-en="Salads">Σαλάτες</h2>
-<div class="item"><span>Garden Salad</span><span class="price">10,80€</span></div>
-<div class="item"><span data-gr="Αβοκάντο Σαλάτα" data-en="Avocado Salad">Αβοκάντο Σαλάτα</span><span class="price">8,20€</span></div>
-</div>
-
-<div class="section">
-<h2 data-gr="Γλυκά" data-en="Desserts">Γλυκά</h2>
-<div class="item"><span data-gr="Σοκολατόπιτα" data-en="Chocolate Cake">Σοκολατόπιτα</span><span class="price">6,00€</span></div>
-<div class="item"><span>Tiramisu</span><span class="price">5,50€</span></div>
-<div class="item"><span data-gr="Καρότο Κέικ" data-en="Carrot Cake">Καρότο Κέικ</span><span class="price">4,00€</span></div>
-</div>
-
-<div class="section">
-<h2 data-gr="Παγωτά" data-en="Ice Creams">Παγωτά</h2>
-<div class="item"><span>Salted Caramel</span><span class="price">4,60€</span></div>
-<div class="item"><span data-gr="Φράουλα" data-en="Strawberry">Φράουλα</span><span class="price">4,60€</span></div>
-<div class="item"><span>Sorbet Mango (VEGAN)</span><span class="price">4,60€</span></div>
-</div>
-
-<div class="section">
-<h2 data-gr="Αναψυκτικά & Κοκτέιλ" data-en="Soft Drinks & Cocktails">Αναψυκτικά & Κοκτέιλ</h2>
-<div class="item"><span>Green Cola 250ml</span><span class="price">3,00€</span></div>
-<div class="item"><span data-gr="Λεμονάδα 250ml" data-en="Lemonade 250ml">Λεμονάδα 250ml</span><span class="price">3,00€</span></div>
-<div class="item"><span>Mojito</span><span class="price">8,00€</span></div>
-<div class="item"><span>Negroni</span><span class="price">10,00€</span></div>
 </div>
 
 <footer>
@@ -213,26 +176,6 @@ All rights reserved | Powered by Kalligiannakis Kostis
 </footer>
 
 </div>
-
-<script>
-let lang = "gr";
-
-function toggleLang(btn) {
-    lang = lang === "gr" ? "en" : "gr";
-
-    document.querySelectorAll("[data-gr]").forEach(el => {
-        el.textContent = el.dataset[lang];
-    });
-
-    btn.classList.add("animate");
-    setTimeout(() => btn.classList.remove("animate"), 400);
-
-    const menu = document.getElementById("menu");
-    menu.classList.remove("menu-animate");
-    void menu.offsetWidth;
-    menu.classList.add("menu-animate");
-}
-</script>
 
 </body>
 </html>
